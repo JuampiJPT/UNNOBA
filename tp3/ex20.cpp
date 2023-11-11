@@ -15,7 +15,7 @@ struct Nodo{
 };
 
 void cargarInicio(Nodo * & fin, Nodo * & nuevo){
-    if (fin != nullptr){
+    if (fin == nullptr){
         nuevo->next=nuevo;
         fin=nuevo;
     }
@@ -34,7 +34,7 @@ void cargarDatos(Nodo * & fin){
         cout<<"ingrese nombre de usuario: ";
         getline(cin>> ws, nombre);
         cout<<"ingrese el segundos: ";
-        cin>>PID; 
+        cin>>segundos; 
         cout<<"ingrese el fecha(DDMM): ";
         cin>>fecha;
         Nodo * nuevo= new Nodo;
@@ -59,7 +59,7 @@ void aumentarPID (Nodo * & fin){
         Nodo * aux= fin->next;
         do{
             if (aux->proceso.PID==PID){
-                aux->proceso.PID+=cantSeg;
+                aux->proceso.segundos+=cantSeg;
                 existe=true;
             }
             aux=aux->next;
@@ -74,13 +74,66 @@ void aumentarPID (Nodo * & fin){
     }
 }
 
-void 
+void eliminarProceso (Nodo * & fin){
+    int DDMM;
+    cout<<"ingrese la fecha del proceso a eliminar en formato DDMM: ";
+    cin>>DDMM;
+    bool borrado;
+    if (fin != nullptr)
+    {
+        Nodo * aux= fin;
+        do
+        {
+            if (aux->next->proceso.fecha==DDMM){
+                Nodo*copia=nullptr;
+                copia=aux->next;
+                aux->next=aux->next->next;
+                delete copia;
+                borrado=true;
+                
+            }
+            aux=aux->next;
+            
+        } while (aux != fin && !borrado);    
+    }
+    if (borrado)
+    {
+        cout<<"el proceso fue borrado";
+    }
+    else
+    {
+        cout<<"no se encontro ningun proceso con esa fecha.";
+    }    
+}
+
+
+void imprimir (Nodo * fin){
+    if(fin != nullptr){
+        Nodo * aux= fin->next;  
+        do
+        {
+            cout<<"PID: "<<aux->proceso.PID<<endl;
+            cout<<"fecha: "<<aux->proceso.fecha<<endl;
+            cout<<"segundos: "<<aux->proceso.segundos<<endl;
+            aux=aux->next;
+        } while (aux!=fin->next);
+        
+    }
+}
 
 
 
 
 
 main(){
-
+    Nodo* fin=nullptr;
+    cargarDatos(fin);
+    imprimir(fin); 
+    cout<<"aumentar PID:"<<endl;
+    aumentarPID(fin);
+    imprimir(fin);
+    cout<<"eliminar proceso: "<<endl;
+    eliminarProceso(fin);
+    imprimir(fin);
 return 0;
 }
