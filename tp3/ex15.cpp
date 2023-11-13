@@ -18,15 +18,15 @@ struct Nodo
 };
 
 void ordenarAlfabetoYSensor(Nodo *&inicio, Nodo *&nuevo) {
-    if (inicio == nullptr || inicio->automovil.patente[0] > nuevo->automovil.patente[0] ||
-        (inicio->automovil.patente[0] == nuevo->automovil.patente[0] && inicio->automovil.sensor > nuevo->automovil.sensor)) {
+    if (inicio == nullptr || inicio->automovil.patente > nuevo->automovil.patente ||
+        (inicio->automovil.patente == nuevo->automovil.patente && inicio->automovil.sensor > nuevo->automovil.sensor)) {
         nuevo->next = inicio;
         inicio = nuevo;
     } else {
         Nodo *aux = inicio;
         while (aux->next != nullptr &&
-               (aux->next->automovil.patente[0] < nuevo->automovil.patente[0] ||
-                (aux->next->automovil.patente[0] == nuevo->automovil.patente[0] &&
+               (aux->next->automovil.patente < nuevo->automovil.patente ||
+                (aux->next->automovil.patente == nuevo->automovil.patente &&
                  aux->next->automovil.sensor < nuevo->automovil.sensor))) {
             aux = aux->next;
         }
