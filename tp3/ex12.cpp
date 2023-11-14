@@ -142,14 +142,14 @@ void borrarHeap (Nodo* & inicio){
 main(){
     Nodo* inicio=nullptr;
     cargarDatos(inicio);
-    imprimirLista(inicio);
+    /*imprimirLista(inicio);
     cout<<endl;
     incrementoPrecio(inicio);
     imprimirLista(inicio);
     cout<<endl;
     incrementarStock(inicio);
     imprimirLista(inicio);
-    cout<<endl;
+    cout<<endl;*/
     eliminarSinStock(inicio);
     imprimirLista(inicio);
     borrarHeap(inicio);

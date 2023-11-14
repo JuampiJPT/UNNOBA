@@ -88,6 +88,8 @@ main(){
     cout<<endl;
     cout<<endl;
     imprimirLista(unidos);
+    cout<<endl;
+    imprimirLista(sucursal1);
 
 return 0;
 }

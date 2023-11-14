@@ -12,11 +12,11 @@ void CrearNodoOrdenadoALf(Nodo* & inicio, string palabra) {
     Nodo* nuevo = new Nodo;
     nuevo->palabras = palabra;
     Nodo* aux = inicio;
-    if (inicio == nullptr || palabra[0] < inicio->palabras[0]) {
+    if (inicio == nullptr || palabra < inicio->palabras) {
         nuevo->next = inicio;
         inicio = nuevo;
     } else {
-        while (aux->next != nullptr && palabra[0] >= aux->next->palabras[0]) {
+        while (aux->next != nullptr && palabra >= aux->next->palabras) {
             aux = aux->next;
         }
         nuevo->next = aux->next;
