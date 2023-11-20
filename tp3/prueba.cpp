@@ -39,15 +39,12 @@ void cargarDatos (Nodo * & inicio){
 }
 
 void merge(Nodo*& inicio, Nodo*& inicio1, Nodo*& inicio2) {
-    
 
     while (inicio1 != nullptr) {
         Nodo* nuevo = inicio1;
         inicio1 = inicio1->next;
         insertarAlfabeto(inicio, nuevo);
     }
-   
-
     while (inicio2 != nullptr) {
         Nodo* nuevo = inicio2;
         inicio2 = inicio2->next;
