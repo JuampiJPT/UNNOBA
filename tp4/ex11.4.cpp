@@ -3,20 +3,32 @@
 using namespace std;
 
 
-int impar (int arreglo[], int dimensionLog){
-    if (arreglo[dimensionLog-1]%2==1)
+int impar (int arreglo[], int dimensionLog, int contador=0){
+    if (dimensionLog==0 or dimensionLog==contador)
     {
-        return arreglo[dimensionLog-1];
+        return 0;
+    
+    
     }
-    return impar(arreglo, dimensionLog-1);
+     else if (arreglo[contador]%2==1)
+     {
+        return arreglo[contador];
+     }
+      
+    
+    
+    contador++;
+    dimensionLog--;
+    return impar(arreglo, dimensionLog, contador);
     
 }
 
 
 
 main(){
-int arreglo[5]={2,4,5,4,8};
-int dimensionLog=4;
-cout<<impar(arreglo,dimensionLog)<<endl;
+int arreglo[5]={2,2,4,4,2};
+int dimensionLog=5;
+int contador=0;
+cout<<impar(arreglo,dimensionLog,contador)<<endl;
 return 0;
 }
