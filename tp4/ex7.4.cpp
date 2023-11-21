@@ -21,7 +21,7 @@ int calculadorPotencia (int numero, int exponente){
 
 
 main(){
-    cout<<calculadorPotencia(0,12);
+    cout<<calculadorPotencia(5,3);
 
 return 0;
 }

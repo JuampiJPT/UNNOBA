@@ -11,7 +11,7 @@ int inverso (int numero, int resultado = 0){
 }
 main(){
     int resultado;
-    cout<< inverso (1234,resultado);
+    cout<< inverso (12345,resultado);
 
 return 0;
 }
