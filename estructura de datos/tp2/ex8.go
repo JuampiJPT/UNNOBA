@@ -21,9 +21,10 @@ case numeros[medio]>valor:
 case numeros[medio]<valor:
 	//entonces retornamos la funcion pero acortando el array del medio hacia adelante
 	return BusquedaBinaria(numeros,medio+1,final,valor)
+case numeros[medio]==final:
+	return -1
 default:
-	//si no encontramos el numero devuelve -1
-	 return -1
+	return -1
 }
 
 }
@@ -32,7 +33,7 @@ default:
 func main(){
 
 	numeros:=[]int {1,2,3,4,43,47,49,87,556}
-	fmt.Print(BusquedaBinaria(numeros,0,len(numeros)-1, 47))
+	fmt.Print(BusquedaBinaria(numeros,0,len(numeros)-1, 78))
 
 }
 

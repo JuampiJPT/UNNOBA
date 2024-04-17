@@ -25,7 +25,7 @@ func vocalesConsonantes(palabra string) (int, int) {
 }
 
 func main() {
-	palabra := "hola"
+	palabra := "hola a todos"
 	cantidadVocales, cantidadConsonantes := vocalesConsonantes(palabra)
 	fmt.Printf("Cantidad de vocales: %d\n", cantidadVocales)
 	fmt.Printf("Cantidad de consonantes: %d\n", cantidadConsonantes)
