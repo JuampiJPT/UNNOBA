@@ -9,7 +9,15 @@ type Nodo struct {
 
 type Pila struct{
 	tope *Nodo;
+	contador int;
 	
+}
+
+func NuevaPila() *Pila {
+	return &Pila{
+		tope:  nil,
+		contador: 0, // Inicializar contador en cero
+	}
 }
 
 func (P *Pila) apilar (valor int){
@@ -25,11 +33,13 @@ func (P *Pila) apilar (valor int){
 		nuevo.next=P.tope;
 		P.tope=nuevo;
 	}
+	P.contador++;
 }
 
 func (P *Pila) desapilar (){
 	if P.tope != nil {
 		P.tope=P.tope.next;
+		P.contador--;
 	}
 }
 
@@ -47,7 +57,10 @@ func main(){
 	pila.apilar(5);
 	pila.apilar(6);
 	pila.imprimir(pila);
+	fmt.Println("La cantidad de elementos es:",pila.contador);
 	pila.desapilar();
 	fmt.Println("test");
 	pila.imprimir(pila);
+	fmt.Println("La cantidad de elementos es:",pila.contador);
+	
 }
