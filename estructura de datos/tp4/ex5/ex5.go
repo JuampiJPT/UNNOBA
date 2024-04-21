@@ -75,20 +75,36 @@ func (P *Pila) balanceada() bool {
     return estaBalanceada
 }
 
+func (P *Pila) deStringAPila (cadena string){
+	for i := 0; i < len(cadena); i++ {
+		char:=rune(cadena[0]);
+		P.apilar(char);
+		cadena=cadena[1:];
+		
+	}
+}
+
+func (P *Pila) imprimir (pila Pila){
+	aux := pila;
+	for  aux.tope != nil {
+		fmt.Println(aux.tope.caracter);
+		aux.tope=aux.tope.next;
+	}
+}
 
     
 
 
 func main() {
 	var pila Pila
-	pila.apilar('{');
-	pila.apilar('[');
-	pila.apilar('}');
-	pila.apilar(']');
-
+	pila.deStringAPila("{[()]}")
+	fmt.Println(len("{[()]}"))
+	pila.imprimir(pila);
+/*
 	if pila.balanceada() {
 		fmt.Println("Esta balanceada")
 	} else {
 		fmt.Println("No esta balanceada")
 	}
+	*/
 }
