@@ -24,11 +24,11 @@ func NuevaCola() *Cola {
 	}
 }
 
-func (C *Cola) encolar(value int) {
+func (C *Cola) encolarPrincipio(value int) {
 	nuevo := &Nodo{
 		valor:    value,
 		next:     nil,
-		previous: nil, // El enlace anterior del nuevo nodo apunta al nodo final actual
+		previous: nil, 
 	}
 
 	if C.isEmpty() {
@@ -44,7 +44,25 @@ func (C *Cola) encolar(value int) {
 	C.contador++
 }
 
-func (C *Cola) desencolar(){
+func (C *Cola) encolarFinal(value int)  {
+
+	nuevo := &Nodo{
+		valor:    value,
+		next:     nil,
+		previous: nil, 
+	}
+	if C.isEmpty() {
+		C.start = nuevo
+		C.end=nuevo
+	} else{
+		nuevo.next=C.start;
+		C.start.previous=nuevo;
+		C.start=nuevo;
+	}
+C.contador++;
+}
+
+func (C *Cola) desencolarPrincipio(){
 	if C.end!=nil{
 		C.end=C.end.previous;
 	}else{
@@ -52,6 +70,13 @@ func (C *Cola) desencolar(){
 	}
 	C.contador--;
 }
+
+func (C *Cola) desencolarFinal(){
+	if C.start!=nil{
+		C.start=C.start.next;
+		C.start.previous=nil;
+		C.contador--;
+}}
 
 
 func (C *Cola) isEmpty () bool {
@@ -74,15 +99,15 @@ func (C *Cola) imprimir (cola Cola){
  func main(){
 
 	var cola = NuevaCola();
-	cola.encolar(4);
-	cola.encolar(2);
-	cola.encolar(6);
-	cola.encolar(5);
+	cola.encolarFinal(4);
+	cola.encolarFinal(3);
+	cola.encolarPrincipio(2);
 	fmt.Println("cantidad de elementos: ", cola.contador);
 
 	cola.imprimir(*cola);
 
-	cola.desencolar();
+	cola.desencolarFinal();
+	//cola.desencolarPrincipio()
 	
 	
 	fmt.Println("test");
