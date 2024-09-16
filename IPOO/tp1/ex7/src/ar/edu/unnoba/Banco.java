@@ -19,6 +19,8 @@ public class Banco {
         setCliente();
     }
 
+
+
     public Vector<Transaccion> getTransacciones() {
         return transacciones;
     }
